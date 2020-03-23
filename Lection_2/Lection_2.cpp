@@ -3,8 +3,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "function.h"
 
-void updatePtrs(size_t* ptrA, size_t* ptrB, size_t* val);
+#define NULL 0
+
+
 
 
 int main()
@@ -12,10 +15,6 @@ int main()
     size_t a = 5;
     size_t b = 50;
     size_t val = 10;
-
-    size_t* ptrA = &a;
-    size_t* ptrB = &b;
-    size_t* pval = &val;
 
     size_t* ptrA = &a;
     size_t* ptrB = &b;
@@ -34,11 +33,19 @@ int main()
 
     printf("%d  %d  %d\n", a, b, val);
 
-    return 0;
-}
+    // НУЛЕВОЙ УКАЗАТЕЛЬ
 
-void updatePtrs(size_t* ptrA, size_t* ptrB, size_t* val)
-{
-    *ptrA += *val;
-    *ptrB += *val;
+    int* ptr(0); // ptr теперь нулевой указатель
+    int* ptr1; // ptr1 не инициализирован
+    ptr1 = 0; // ptr1 теперь нулевой указатель
+
+    double* ptr2(0);
+    if (ptr2) {
+        printf("Pointer to double");
+    }
+    else {
+        printf("NULL pointer");
+    }
+
+    return 0;
 }
