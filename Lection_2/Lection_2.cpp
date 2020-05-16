@@ -16,10 +16,6 @@ int main()
     size_t b = 50;
     size_t val = 10;
 
-    size_t* ptrA = &a;
-    size_t* ptrB = &b;
-    size_t* pval = &val;
-
     int val1 = 4;
 
     const int* p; // нельзя поменять значение указателя
@@ -29,7 +25,7 @@ int main()
 
     printf("%d  %d  %d\n", a, b, val);
 
-    updatePtrs(ptrA, ptrB, pval);
+    updatePtrs(&a, &b, &val);
 
     printf("%d  %d  %d\n", a, b, val);
 
