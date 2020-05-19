@@ -47,3 +47,4 @@ double sum_use_macros(int count,  ...)
     va_end(sumArgs);
     return result;
 }
+

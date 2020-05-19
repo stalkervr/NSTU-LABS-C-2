@@ -54,8 +54,8 @@ void search_wrapper(char* str, char* _str1, char* _str2)
         start_next_point = inner_search(start_next_point, _str1, _str2) + strlen(_str1);
         inner_search(start_next_point, _str1, _str2);
     }
-    printf("Поиск завершон ... найдено %d фрагментов \n\n",count);
-    printf("----------------------------------------------------------------------------------------------- \n\n", count);
+    printf("Поиск завершён ... найдено %d фрагментов \n\n",count);
+    printf("----------------------------------------------------------------------------------------------- \n\n");
 }
 
 char* inner_search(char* str, char* str1, char* str2)
@@ -74,4 +74,6 @@ char* inner_search(char* str, char* str1, char* str2)
     }
     return pointer1;
 }
+
+
 
