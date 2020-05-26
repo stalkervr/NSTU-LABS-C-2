@@ -4,25 +4,37 @@ using namespace std;
 #include <iostream>
 
 double F10(int a1, ...);
+void F1(char* p, ...);
+int F8(int a1, ...);
 
 int main()
 {
+	char test[] = "Hello ";
+	int test2[] = { 1,2,3,4,5 };
 
-    cout << "Res = %f\n" << F10(4, 2.1, 1.1, 2.3)<< endl;
+
+
+    cout << "Res = " << F10(4, 2.1, 1.1, 2.3)<< endl;
+	cout << "Res = " << F8(3, 2, 5, 2, 0) << endl;
+	F1(test, "test ", "work " , NULL );
 	getchar();
 }
 
+
+#pragma region F1
 //--------------------------------------------------------1
-// выводит список аргументов
+// присоединяет переданные слова к строке
 void F1(char* p, ...)
 {
 	char** q;
 	for (q = &p; *q != NULL; q++) 
 		cout << *q;
 }
+#pragma endregion
 
 
 //--------------------------------------------------------2
+// 
 void F2(int* p, ...)
 {
 	int** q, i, d;
@@ -95,6 +107,7 @@ char* F7(char* p, ...)
 
 
 //--------------------------------------------------------8
+// считает сумму аргументов целого типа
 int F8(int a1, ...)
 {
 	int* q, i, s;
@@ -121,9 +134,10 @@ double F9(int p, ...)
 	}
 	return dd;
 }
-
+#pragma region F10
 //------------------------------------------------------10
-// считает сумму аргументов
+// считает сумму аргументов типа double
+// F10(4, 2.1, 1.1, 2.3)
 double F10(int a1, ...)
 {
 	double s, * q; int i, n;
@@ -131,6 +145,9 @@ double F10(int a1, ...)
 		s += *q++;
 	return s;
 }
+#pragma endregion
+
+
 //-------------------------------------------------------11
 //
 //double F11(int a1, ...)
