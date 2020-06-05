@@ -8,19 +8,38 @@ void F1(char* p, ...);
 int F8(int a1, ...);
 char* F7(char* p, ...);
 int F4(int p[], int a1, ...);
+int F13(char* p, ...);
+void F2(int* p, ...);
+
+double F9(int p, ...);
+
+union xx { int* pi; long* pl; double* pd; };
+
 
 int main()
 {
-	char test[] = "Hello ";
-	int test2[] = { 1,2,3,4,5 };
+	//char test[] = "Hello ";
+	//int test2[] = { 1,2,3,4,5 };
+	//char t = 3;
+
+	//char* _t = &t;
+	cout << "Res = " << F9(3, 2.2, 0) << endl;
+
+ //   cout << "Res = " << F10(4, 2.1, 1.1, 2.3)<< endl;
+	//cout << "Res = " << F8(3, 2, 5, 2, 0) << endl;
 
 
-
-    cout << "Res = " << F10(4, 2.1, 1.1, 2.3)<< endl;
-	cout << "Res = " << F8(3, 2, 5, 2, 0) << endl;
-	cout << "Res = " << F4(test2, 2, 5, 2, 0) << endl;
-	cout << "Res = " << F7(test, "tes000000", "tes00000011111",  NULL) << endl;
-	F1(test, "test ", "work " , NULL );
+	//for (int i = 0; i < 5; i++) {
+	//	printf("Arr - %d\n", test2[i]);
+	//}
+	////cout << "Res F4 = " << F4(test2, 7, 6, 0) << endl;
+	////F2(test2, 7, 6, NULL);
+	//for (int i = 0; i < 5; i++) {
+	//	printf("Arr - %d\n", test2[i]);
+	//}
+	//F1(test, "test ", "work " , NULL );
+	//cout << "Res = " << F7(test, "tes000000", "tes00000011111",  NULL) << endl;
+	//cout << "Res F13 = " << F13(_t, '5', '2') << endl;
 	getchar();
 }
 
@@ -59,9 +78,9 @@ int* F3(int* p, ...)
 	return s;
 }
 
-
+#pragma region F4
 //--------------------------------------------------------4
-
+// записывае в массив р переданные агруметы зав 0
 int F4(int p[], int a1, ...)
 {
 	int* q, i;
@@ -70,8 +89,12 @@ int F4(int p[], int a1, ...)
 	return i;
 }
 
+#pragma endregion
 
+
+#pragma region F5
 //--------------------------------------------------------5
+// int p маркер типа для считывания и вывода данных
 union x { int* pi; long* pl; double* pd; };
 void F5(int p, ...)
 {
@@ -86,6 +109,8 @@ void F5(int p, ...)
 		}
 	}
 }
+#pragma endregion
+
 
 
 //--------------------------------------------------------6
@@ -125,8 +150,10 @@ int F8(int a1, ...)
 }
 #pragma endregion
 
+#pragma region F9
 //--------------------------------------------------------9
-union xx { int* pi; long* pl; double* pd; };
+// p - это маркер типа передав аргументов посл арг = 0
+//union xx { int* pi; long* pl; double* pd; };
 double F9(int p, ...)
 {
 	union xx ptr;
@@ -142,6 +169,8 @@ double F9(int p, ...)
 	}
 	return dd;
 }
+#pragma endregion
+
 
 #pragma region F10
 //------------------------------------------------------10
@@ -178,6 +207,7 @@ double F10(int a1, ...)
 #pragma region F12
 ////--------------------------------------------------------12
 // первый параметр задает тип аргументов далее подсчёт суммы
+// последний аргумент 0
 //double F12(char* p, ...)
 //{
 //	double s;
@@ -194,18 +224,19 @@ double F10(int a1, ...)
 #pragma endregion
 
 ////--------------------------------------------------------13
+//
+int F13(char* p, ...)
+{
+	int s = 0;
+	int* q = (int*)(&p + 1);
+	for (; *p != 0; p++)
+		if (*p >= '0' && *p <= '9') s += q[*p - '0'];
+	return s;
+}
 
-//int F13(char* p, ...)
-//{
-//	int s = 0;
-//	int* q = (int*)(&p + 1);
-//	for (; *p != 0; p++)
-//		if (*p >= '0' && *p <= '9') s += q[*p - '0'];
-//	return s;
-//}
-
-
-////--------------------------------------------------------14
+#pragma region F14
+//--------------------------------------------------------14
+// p - это маркер типа передав аргументов посл арг = 0
 //double F14(int p, ...)
 //{
 //	double dd = 0;
@@ -221,4 +252,6 @@ double F10(int a1, ...)
 //	}
 //	return dd;
 //}
+#pragma endregion
+
 
