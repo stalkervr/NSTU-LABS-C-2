@@ -1,30 +1,30 @@
 #include "header.h"
 
-void string_unpacking(char* pointer)
+void string_unpacking(char* start_point)
 {
-	int countNumbers;
+	int count_numbers;
 
-	while (*pointer++ == '%') {
-		if (*pointer == 'd' || *pointer == 'f') {
-			countNumbers = 1;
+	while (*start_point++ == '%') {
+		if (*start_point == 'd' || *start_point == 'f') {
+			count_numbers = 1;
 		}
 		else {
-			countNumbers = (int)*pointer++;
+			count_numbers = (int)*start_point++;
 		}
-		if (*pointer++ == 'd') {
-			printf("  Integers have been entered: %d, with values: ", countNumbers);
+		if (*start_point++ == 'd') {
+			printf("  Integers have been entered -> %d, with values -> ", count_numbers);
 			int integer_int;
-			for (int i = 0; i < countNumbers; i++) {
-				integer_int = *((int*)pointer)++;
+			for (int i = 0; i < count_numbers; i++) {
+				integer_int = *((int*)start_point)++;
 				printf("%d ", integer_int);
 			}
 			printf("\n");
 		}
 		else {
-			printf("  Floaters have been entered: %d, with values: ", countNumbers);
+			printf("  Floaters have been entered -> %d, with values -> ", count_numbers);
 			float float_f;
-			for (int i = 0; i < countNumbers; i++) {
-				float_f = *((float*)pointer)++;
+			for (int i = 0; i < count_numbers; i++) {
+				float_f = *((float*)start_point)++;
 				printf("%.2f ", float_f);
 			}
 			printf("\n");
@@ -32,45 +32,45 @@ void string_unpacking(char* pointer)
 	}
 }
 
-void string_view(char* pointer)
+void string_view(char* start_point)
 {
-	int countNumbers;
+	int count_numbers;
 
 	printf("  Packed data sequence -> ");
-	while (*pointer++ == '%') {
-		if (*pointer == 'd' || *pointer == 'f') {
-			countNumbers = 1;
+	while (*start_point++ == '%') {
+		if (*start_point == 'd' || *start_point == 'f') {
+			count_numbers = 1;
 		}
 		else {
-			countNumbers = (int)*pointer++;
+			count_numbers = (int)*start_point++;
 		}
-		if (*pointer++ == 'd')
+		if (*start_point++ == 'd')
 		{
 			printf("%%");
-			if (countNumbers == 1) {
+			if (count_numbers == 1) {
 				printf("d");
 			}
 			else {
-				printf("%dd", countNumbers);
+				printf("%dd", count_numbers);
 			}
 			int integer_int;
-			for (int i = 0; i < countNumbers; i++) {
-				integer_int = *((int*)pointer)++;
+			for (int i = 0; i < count_numbers; i++) {
+				integer_int = *((int*)start_point)++;
 				printf("%d", integer_int);
 			}
 		}
 		else
 		{
 			printf("%%");
-			if (countNumbers == 1) {
+			if (count_numbers == 1) {
 				printf("f");
 			}
 			else {
-				printf("%df", countNumbers);
+				printf("%df", count_numbers);
 			}
 			float float_f;
-			for (int i = 0; i < countNumbers; i++) {
-				float_f = *((float*)pointer)++;
+			for (int i = 0; i < count_numbers; i++) {
+				float_f = *((float*)start_point)++;
 				printf("%.2f", float_f);
 			}
 		}

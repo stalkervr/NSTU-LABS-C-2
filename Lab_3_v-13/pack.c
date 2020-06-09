@@ -35,6 +35,7 @@ char* input_int_numbers(char* curent_point, int free_mem)
 	}
 	return curent_point;
 }
+
 char* input_float_numbers(char* curent_point, int free_mem)
 {
 	int count_numbers;
@@ -59,11 +60,11 @@ char* input_float_numbers(char* curent_point, int free_mem)
 			do {
 				printf("  Enter %d-s floaters number -> ", i + 1);
 				scanf("%f", &float_f);
-				if (float_f < FLT_MIN && float_f > FLT_MAX)
+				if (float_f < FLT_MIN || float_f > FLT_MAX)
 				{
 					printf("  The entered number is out of range !");
 				}
-			} while (float_f < FLT_MIN && float_f > FLT_MAX);
+			} while (float_f < FLT_MIN || float_f > FLT_MAX);
 			*((float*)curent_point)++ = float_f;
 		}
 	}
@@ -72,7 +73,8 @@ char* input_float_numbers(char* curent_point, int free_mem)
 
 int overflow_control(int free_mem, int count_numbers)
 {
-	if (free_mem < ((sizeof(count_numbers) * count_numbers) + 3))
+	int size_marker = count_numbers > 1 ?  3 :  2;
+	if (free_mem < ((sizeof(count_numbers) * count_numbers) + size_marker))
 	{
 		return 1;
 	}
