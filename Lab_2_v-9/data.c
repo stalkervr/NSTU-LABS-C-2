@@ -1,5 +1,5 @@
 #include "header.h"
-
+//TODO: Переписать эту функцию с возвр указателя
 student data_add(int* _last_id)
 {
 	student res;
