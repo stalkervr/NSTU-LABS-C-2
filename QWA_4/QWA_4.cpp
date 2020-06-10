@@ -21,9 +21,13 @@ int main()
 	//char test[] = "Hello ";
 	//int test2[] = { 1,2,3,4,5 };
 	//char t = 3;
-
+	int button1 = _getwch();
+	cout << "1: " << (int)button1;
+	int button2 = _getwch();
+	cout << " 2: " << (int)button2;
+	//_getwch();
 	//char* _t = &t;
-	cout << "Res = " << F9(3, 2.2, 0) << endl;
+	//cout << "Res = " << F9(3, 2.2, 0) << endl;
 
  //   cout << "Res = " << F10(4, 2.1, 1.1, 2.3)<< endl;
 	//cout << "Res = " << F8(3, 2, 5, 2, 0) << endl;
