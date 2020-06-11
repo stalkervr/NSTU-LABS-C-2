@@ -35,11 +35,13 @@ void print_search_header()
 	printf("\n");
 }
 
-void print_footer()
+void print_footer(int* _count_record, int* _count_free_items, student* items)
 {
+	*_count_free_items = count_free_items(items, _count_record);
 	printf("\n");
 	print_line();
-	printf(" | <<<< Назад 10 зап.  ||     Для просмотра задания нажмите комбинацию Shift+I    ||   Вперёд 10 зап. >>>> |\n");
+	printf(" | <<<< Назад 10 зап.   ||     Всего записей ->  %3d     ||  Свободно ->  %3d    ||    Вперёд 10 зап. >>>> |\n",
+		*_count_record,*_count_free_items);
 	print_line();
 	printf("\n");
 }
@@ -80,7 +82,7 @@ void info()
 	printf("\t\t\t\tДля входа в программу нажмите | Enter |\n");
 }
 
-void start(student* students, int* _count_record, int* _last_id)
+void start(student* students, int* _count_record, int* _last_id, int* _count_free_items)
 {
 	system("cls");
 	info();
@@ -89,6 +91,7 @@ void start(student* students, int* _count_record, int* _last_id)
 		switch (_getch())
 		{
 		case ESC:
+			free(students);
 			exit(0);
 			break;
 
@@ -96,18 +99,17 @@ void start(student* students, int* _count_record, int* _last_id)
 			system("cls");
 			print_menu_header();
 			print_table_header();
-			//print_line();
 			data_print(students, _count_record);
 			print_line();
-			print_footer();
+			print_footer(_count_record, _count_free_items, students);
 			break;
 
 		case SHIFT_A: // добавить запись
 			system("cls");
 			print_menu_header();
 			print_table_header();
-			students = data_add_to_array(students, _count_record, _last_id);
-			print_footer();
+			students = data_add_to_array(students, _count_record, _last_id, _count_free_items);
+			print_footer(_count_record, _count_free_items, students);
 			break;
 
 		case SHIFT_E: // редактировать запись
@@ -117,21 +119,25 @@ void start(student* students, int* _count_record, int* _last_id)
 		case SHIFT_D: // удалить запись
 			system("cls");
 			print_menu_header();
-			print_footer();
+			students = delete_item(students, _count_record);
+			print_footer(_count_record, _count_free_items, students);
 			break;
 
 		case SHIFT_C: // очистить запись
 			system("cls");
+			print_menu_header();
+			students = clear_item(students, _count_record, _count_free_items);
+			print_footer(_count_record, _count_free_items, students);
 			break;
 
-		case SHIFT_S: // запуск поиска
+		case SHIFT_S: // запуск сортировки
 			system("cls");
 			break;
 
 		case SHIFT_F: // запуск поиска
 			system("cls");
 			print_menu_header();
-			print_footer();
+			print_footer(_count_record, _count_free_items, students);
 			break;
 
 		case SHIFT_I: // показать задание
