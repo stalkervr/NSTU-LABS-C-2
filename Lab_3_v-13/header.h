@@ -7,7 +7,7 @@
 #include <limits.h>
 #include <float.h>
 
-#define BUFFER_SIZE 20
+#define BUFFER_SIZE 30
 
 #define ENTER 13
 #define ESC 27
