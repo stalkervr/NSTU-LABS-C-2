@@ -107,18 +107,29 @@ void start(student* students, int* _count_record, int* _last_id, int* _count_fre
 		case SHIFT_A: // добавить запись
 			system("cls");
 			print_menu_header();
-			print_table_header();
+			//print_table_header();
 			students = data_add_to_array(students, _count_record, _last_id, _count_free_items);
 			print_footer(_count_record, _count_free_items, students);
 			break;
 
 		case SHIFT_E: // редактировать запись
 			system("cls");
+			print_menu_header();
+			print_table_header();
+			print_line();
+			data_print(students, _count_record);
+			print_line();
+			students = edit_item(students, _count_record);
+			print_footer(_count_record, _count_free_items, students);
 			break;
 
 		case SHIFT_D: // удалить запись
 			system("cls");
 			print_menu_header();
+			print_table_header();
+			print_line();
+			data_print(students, _count_record);
+			print_line();
 			students = delete_item(students, _count_record);
 			print_footer(_count_record, _count_free_items, students);
 			break;
@@ -126,6 +137,10 @@ void start(student* students, int* _count_record, int* _last_id, int* _count_fre
 		case SHIFT_C: // очистить запись
 			system("cls");
 			print_menu_header();
+			print_table_header();
+			print_line();
+			data_print(students, _count_record);
+			print_line();
 			students = clear_item(students, _count_record, _count_free_items);
 			print_footer(_count_record, _count_free_items, students);
 			break;

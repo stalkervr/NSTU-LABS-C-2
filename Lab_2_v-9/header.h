@@ -6,6 +6,7 @@
 #include <malloc.h>
 #include <stdbool.h>
 #include <time.h>
+#include<string.h>
 //#include <limits.h>
 //#include <float.h>
 
@@ -68,6 +69,7 @@ void fill_array(int*);
 int count_marks_in_array(int*);
 student* clear_item(student* items, int* _count_record, int* _count_free_items);
 student* delete_item(student* items, int* _count_record);
+student* edit_item(student* items, int* _count_record);
 student* search_by_id(student*, int, int*);
 int search_index_by_id(student*, int*, int);
 

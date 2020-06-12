@@ -4,18 +4,24 @@ student data_add(int* _last_id)
 {
 	student res;
 	int _id = *_last_id + 1;
-	char _name[30];
-	char _surname[30];
-	char _second_name[35];
+	char _buffer[35] = { 0 };
 	*_last_id = _id;
+	
 
-	printf("Введите данные данные нового студента для добавления в базу : ->  \n");
-	scanf("%s %s %s", &_name, &_surname, &_second_name);
+	printf("  Введите данные данные нового студента для добавления в базу : ->  \n");
+	
+	printf("\n  Фамилия студента -> ");
+	scanf("%s", &_buffer);
+	strcpy(res.surname, _buffer);
+	printf("\n  Имя студента -> ");
+	scanf("%s", &_buffer);
+	strcpy(res.name, _buffer);
+	printf("\n  Отчество студента -> ");
+	scanf("%s", &_buffer);
+	strcpy(res.second_name, _buffer);
+
 	res.id = _id;
 	res.is_free = 0;
-	strcpy(res.name, _name);
-	strcpy(res.surname, _surname);
-	strcpy(res.second_name, _second_name);
 	fill_array(res.marks);
 	res.marks_count = 0;
 	res.marks_average = 0;
@@ -154,7 +160,7 @@ student* clear_item(student* items, int* _count_record, int* _count_free_items)
 		ptr->is_free = 1;
 	}
 	else {
-		printf("  Не найдено записи с введенным id = %d !!!\n", _item_id);
+		printf("\n  Не найдено записи с введенным id = %d !!!\n", _item_id);
 	}
 	return items;
 }
@@ -172,7 +178,81 @@ student* delete_item(student* items, int* _count_record)
 		(*_count_record)--;
 	}
 	else {
-		printf("  Не найдено записи с введенным id = %d !!!\n", _item_id);
+		printf("\n  Не найдено записи с введенным id = %d !!!\n", _item_id);
+	}
+	return items;
+}
+
+student* edit_item(student* items, int* _count_record)
+{
+	// оценки
+	
+	int stop_flag = 0;
+	int mark_count = items->marks_count;
+	int curent_mark = 0;
+	//
+	int _yes = 1;
+	int _no = 0;
+	int _answer = -1;
+	char buffer[35] = { 0 };
+	//
+	int _item_id = input_item_id();
+	int _item_index = search_index_by_id(items, _count_record, _item_id);
+	if (_item_id != -1) // изменение персональных данных
+	{
+		printf("\n  Изменить фамилию студента д/н ? -> ");
+		scanf("%d", &_answer);
+		if (_answer == _yes)
+		{
+			printf("  Старая фамилия студента -> %s", items[_item_index].surname);
+			printf("\n  Изменить фамилию студента на -> ");
+			scanf("%s", buffer);
+			strcpy(items[_item_index].surname, buffer);
+		}
+
+		printf("\n  Изменить имя студента д/н ? -> ");
+		scanf("%d", &_answer);
+		if (_answer == _yes)
+		{
+			printf("  Старое имя студента -> %s", items[_item_index].name);
+			printf("\n  Изменить имя студента на -> ");
+			scanf("%s", buffer);
+			strcpy(items[_item_index].name, buffer);
+		}
+
+		printf("\n  Изменить отчество студента д/н ? -> ");
+		scanf("%d", &_answer);
+		if (_answer == _yes)
+		{
+			printf("  Старое отчество студента -> %s", items[_item_index].second_name);
+			printf("\n  Изменить отчество студента на -> ");
+			scanf("%s", buffer);
+			strcpy(items[_item_index].second_name, buffer);
+		}
+// добавление оценок
+		printf("\n  Добавить оценки д/н ? -> ?");
+		scanf("%d", &_answer);
+		if (_answer == _yes) {
+			printf("\n");
+			printf("  Вводите оценки по одной и нажимайте ввод \n");
+			printf("  чтобы завершить ввод введите -1 \n");
+			while (stop_flag != 1)
+			{
+				printf("  Оценка ->  ");
+				scanf("%d", &curent_mark);
+				if (curent_mark != -1) {
+					mark_count = mark_count + 1;
+					items[_item_index].marks_count = mark_count;
+					items[_item_index].marks[mark_count - 1] = curent_mark;
+				}
+				else stop_flag = 1;
+				items[_item_index].marks_average = average_mark(items[_item_index].marks);
+			}
+
+		}
+	}
+	else {
+		printf("\n  Не найдено записи с введенным id = %d !!!\n", _item_id);
 	}
 	return items;
 }
@@ -211,7 +291,7 @@ int input_item_id()
 {
 	printf("\n");
 	//printf("  Введите необходимый id записи ->  ");
-	printf("  Для очистки/удаления записи введите id записи ->  ");
+	printf("  Для очистки/удаления/редактирования записи введите id записи ->  ");
 	int _item_id;
 	scanf("%d", &_item_id);
 	return _item_id;
