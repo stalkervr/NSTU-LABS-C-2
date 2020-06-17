@@ -147,9 +147,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="data.c" />
+    <ClCompile Include="add_item.c" />
+    <ClCompile Include="add_test_data.c" />
+    <ClCompile Include="clear_item.c" />
+    <ClCompile Include="delete_item.c" />
+    <ClCompile Include="edit_item.c" />
     <ClCompile Include="Lab_2_v-9.c" />
     <ClCompile Include="menu.c" />
+    <ClCompile Include="search_item.c" />
+    <ClCompile Include="sort_items.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />

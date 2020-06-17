@@ -21,7 +21,25 @@
     <ClCompile Include="Lab_2_v-9.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="data.c">
+    <ClCompile Include="add_item.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="add_test_data.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="clear_item.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="delete_item.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="edit_item.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="search_item.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="sort_items.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
