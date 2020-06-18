@@ -14,7 +14,7 @@ student* edit_item(student* items, int* _count_record)
     // изменение персональных данных
     if (_item_index != -1)
     {
-        printf("\n  Изменить фамилию студента да - 1 /нет - 0 ? -> ");
+        printf("\n  Изменить фамилию студента д/н ? -> ");
         scanf("%d", &_answer);
         if (_answer == _yes)
         {
@@ -23,7 +23,7 @@ student* edit_item(student* items, int* _count_record)
             scanf("%s", buffer);
             strcpy(items[_item_index].surname, buffer);
         }
-        printf("\n  Изменить имя студента да - 1 /нет - 0 ? -> ");
+        printf("\n  Изменить имя студента д/н ? -> ");
         scanf("%d", &_answer);
         if (_answer == _yes)
         {
@@ -32,7 +32,7 @@ student* edit_item(student* items, int* _count_record)
             scanf("%s", buffer);
             strcpy(items[_item_index].name, buffer);
         }
-        printf("\n  Изменить отчество студента да - 1 /нет - 0 ? -> ");
+        printf("\n  Изменить отчество студента д/н ? -> ");
         scanf("%d", &_answer);
         if (_answer == _yes)
         {
@@ -43,7 +43,7 @@ student* edit_item(student* items, int* _count_record)
         }
         //
 // добавление оценок
-        printf("\n  Добавить оценки да - 1 /нет - 0 ? -> ?");
+        printf("\n  Добавить оценки д/н ? -> ?");
         scanf("%d", &_answer);
         if (_answer == _yes) {
             printf("\n");

@@ -92,8 +92,7 @@ void search_by_name(student* items, const int* _count_record)
     scanf("%s", &input_surname);
     printf("  Введите имя студента для поиска - > ");
     scanf("%s", &input_name);
-    printf("\n");
-    print_line();
+ 
     if (items != 0) {
         for (student* item = items; item < items + *_count_record; item++)
         {
