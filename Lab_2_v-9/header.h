@@ -7,7 +7,7 @@
 #include <malloc.h>
 #include <stdbool.h>
 #include <time.h>
-#include<string.h>
+#include <string.h>
 #include <conio.h>
 
 #define ENTER 13
